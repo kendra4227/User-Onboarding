@@ -4,8 +4,8 @@ import * as yup from "yup";
 
 const formSchema = yup.object().shape({
     name:yup.string().required("Name is a required field"),
-    email:yup.string().email.required("Must include email address"),
-    password:yup.string().password().required(),
+    email:yup.string().required("Must include email address"),
+    password:yup.string().required("Must include a password"),
     terms:yup.boolean().oneOf([true]," Please agree to terms of use")
 })
 
@@ -28,7 +28,7 @@ export default function Form (){
     const formSubmit = e => {
         e.preventDefault();
         console.log("form submitted!");
-        axios.post(`https://reqres.in/api/users`)
+        axios.post('https://reqres.in/api/users')
         .then(res => console.log(res))
         .catch(err => console.log(err));
  
@@ -108,6 +108,7 @@ export default function Form (){
                 value={user.password}
                 onChange={inputChange}
                 />
+                   {errorState.password.length > 0 ? <p className = "error">{errorState.password}</p> : null }
             </Label>
             </FormGroup>
             </Col>
