@@ -40,15 +40,18 @@ export default function Form (){
         .validate(e.target.value)
         .then(valid => {
             setErrorState({
-                ...errorState,
-                [e.target.name]:""
+                ...errorState ,
+                [e.target.name] : ""
             })
 
-        })
-        .catch( err => console.log(err.errorState))
-        setErrorState({
-            ...errorState,
-            [e.target.name]: err.errorState[0]
+         })
+        .catch( err => {
+            console.log(err.errorState)
+            setErrorState({
+                ...errorState,
+                [e.target.name]: err.errors[0]
+            })
+     
         })
     };
 
