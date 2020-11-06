@@ -1,7 +1,7 @@
-import React, {useState, axios} from "react";
+import React, {useState} from "react";
 import {Container, Col,Label,FormGroup, Input, Button} from "reactstrap";
 import * as yup from "yup";
-
+import axios from "axios";
 const formSchema = yup.object().shape({
     name:yup.string().required("Name is a required field"),
     email:yup.string().required("Must include email address"),
@@ -28,7 +28,7 @@ export default function Form (){
     const formSubmit = e => {
         e.preventDefault();
         console.log("form submitted!");
-        axios.post('https://reqres.in/api/users')
+        axios.post(`https://reqres.in/api/users`)
         .then(res => console.log(res))
         .catch(err => console.log(err));
  
