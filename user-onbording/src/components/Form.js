@@ -62,6 +62,7 @@ export default function Form (){
         validate(e)
         let value = e.target.type === "checkbox" ? e.target.checked : e.target.value
         setUser({...user, [e.target.name]: value});
+        console.log(user);
     };
 
     return (
